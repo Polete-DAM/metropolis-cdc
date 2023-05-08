@@ -11,7 +11,7 @@ class Recursos extends Model
 
     protected $fillable = [
         'quantity',
-        'service_ID',
+        'service_id',
         'mobiliary',
     ];
 

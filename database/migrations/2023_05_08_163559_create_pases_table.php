@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('pases', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('name');
+            $table->string('buisness');
+            $table->string('phone');
+            $table->datetime('time_start');
+            $table->datetime('time_end');
         });
     }
 

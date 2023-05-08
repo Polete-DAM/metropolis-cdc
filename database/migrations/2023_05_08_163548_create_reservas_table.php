@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('reservas', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->int('client_id');
+            $table->string('event');
+            $table->datetime('day');
         });
     }
 

@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('servicios', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('type');
+            $table->boolean('available');
+            $table->string('supplier');
         });
     }
 

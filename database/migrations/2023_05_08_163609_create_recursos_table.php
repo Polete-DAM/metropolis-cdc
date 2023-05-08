@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('recursos', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->int('quantity');
+            $table->int('service_id');
+            $table->int('mobiliary');
         });
     }
 

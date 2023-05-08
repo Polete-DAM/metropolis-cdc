@@ -11,7 +11,7 @@ class Servicios extends Model
 
     protected $fillable = [
         'type',
-        'availability',
+        'available',
         'supplier',
     ];
 

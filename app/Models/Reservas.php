@@ -10,7 +10,7 @@ class Reservas extends Model
     use HasFactory;
 
     protected $fillable = [
-        'client',
+        'client_id',
         'event',
         'day',
     ];
