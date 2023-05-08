@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Pases extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'buisness',
+        'phone',
+        'time_start',
+        'time_end',
+    ];
+
 }

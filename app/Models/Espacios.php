@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Espacios extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'area',
+        'available',
+        'capacity',
+    ];
+
 }
