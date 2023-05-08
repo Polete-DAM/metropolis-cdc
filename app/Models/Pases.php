@@ -10,11 +10,18 @@ class Pases extends Model
     use HasFactory;
 
     protected $fillable = [
+        'reserva_id',
         'name',
         'buisness',
         'phone',
         'time_start',
         'time_end',
     ];
+
+    public function reservas(){
+
+        return $this->belongsToMany(Reservas::class);
+
+    }
 
 }

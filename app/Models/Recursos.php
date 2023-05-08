@@ -15,4 +15,16 @@ class Recursos extends Model
         'mobiliary',
     ];
 
+    public function espacios(){
+
+        return $this->belongsToMany(Espacios::class);
+
+    }
+
+    public function servicios(){
+
+        return $this->belongsToMany(Servicios::class);
+
+    }
+
 }

@@ -16,4 +16,16 @@ class Espacios extends Model
         'capacity',
     ];
 
-}
+    public function reservas(){
+
+        return $this->belongsToMany(Reservas::class);
+
+    }
+
+    public function recursos(){
+
+        return $this->belongsToMany(Recursos::class);
+
+    }
+
+}   

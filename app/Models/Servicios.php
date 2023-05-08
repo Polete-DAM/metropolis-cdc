@@ -15,4 +15,10 @@ class Servicios extends Model
         'supplier',
     ];
 
+    public function Recursos(){
+
+        return $this->belongsToMany(Recursos::class);
+
+    }
+
 }

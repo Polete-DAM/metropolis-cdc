@@ -15,4 +15,22 @@ class Reservas extends Model
         'day',
     ];
 
+    public function cliente(){
+
+        return $this->belongsTo(cliente::class);
+
+    }
+
+    public function pases(){
+
+        return $this->belongsToMany(Pases::class);
+
+    }
+
+    public function espacios(){
+
+        return $this->belongsToMany(Espacios::class);
+
+    }
+
 }
