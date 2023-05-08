@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('client_id');
             $table->string('event');
             $table->datetime('day');
+            $table->string('estado');
         });
     }
 

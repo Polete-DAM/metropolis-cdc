@@ -13,6 +13,7 @@ class Reservas extends Model
         'client_id',
         'event',
         'day',
+        'estado',
     ];
 
     public function cliente(){
