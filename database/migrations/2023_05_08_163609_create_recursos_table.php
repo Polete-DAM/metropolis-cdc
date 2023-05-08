@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('recursos', function (Blueprint $table) {
             $table->id();
-            $table->int('quantity');
-            $table->int('service_id');
-            $table->int('mobiliary');
+            $table->integer('quantity');
+            $table->integer('service_id');
+            $table->integer('mobiliary');
         });
     }
 

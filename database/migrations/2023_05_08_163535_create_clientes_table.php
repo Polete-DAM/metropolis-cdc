@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('address');
             $table->string('codi_postal');
-            $table->int('phone');
+            $table->integer('phone');
         });
     }
 

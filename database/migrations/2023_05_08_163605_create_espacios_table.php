@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->float('area');
             $table->boolean('available');
-            $table->int('capacity');
+            $table->integer('capacity');
         });
     }
 
