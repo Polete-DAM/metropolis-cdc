@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Reservas;
 
-class ReservasController extends Controller
+class ApiReservasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class ReservasController extends Controller
      */
     public function index()
     {
-        
-        return view('reservas', ['reservas'=>Reservas::all()]);
+        $reservas = Reservas::all();
+        return response()->json($reservas);
     }
 
 
@@ -46,13 +46,9 @@ class ReservasController extends Controller
      */
     public function show(Reservas $reserva)
     {
-        return view('show', ['reserva'=>$reserva]);
+        return response()->json($reserva);
     }
 
-    public function edit(Reservas $reserva)
-    {
-        return view('edit', ['reserva'=>$reserva]);
-    }
 
     /**
      * Update the specified resource in storage.
@@ -61,10 +57,22 @@ class ReservasController extends Controller
      * @param \App\Models\Reserva $reserva
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Reservas $reserva)
+    public function update(Request $request, $id)
     {
-        $reserva->update($request->all());
-        return redirect('reservas');
+        if ($request->user()->tokenCan('create','read','update','delete')) {
+            $reserva = Reservas::find($id);
+            if ($reserva->estado == 'Pendent' || $reserva->estado == 'Acceptada' || $reserva->estado == 'Cancelada' || $reserva->estado == 'Tancada') {
+                $reserva->update($request->all());
+                $reserva->save();
+                return response()->json($reserva);
+            }
+            else {
+                return response()->json('No es pot actualitzar ja que el estat no pot ser aixi');
+            }
+        }
+        else {
+            return response()->json('El token no te permisos');
+        }
     }
 
 
@@ -76,7 +84,13 @@ class ReservasController extends Controller
      */
     public function destroy(Reservas $reserva)
     {
-        $reserva->delete();
-        return redirect('reservas');
+        if ($reserva->estado == 'Pendent' || $reserva->estado == 'Cancelada') {
+            $reserva->delete();
+            return response()->json('comanda eliminada correctament');
+        }
+        else {
+            return response()->json('No es pot eliminar la comanda per el seu estat');
+        }
     }
+
 }

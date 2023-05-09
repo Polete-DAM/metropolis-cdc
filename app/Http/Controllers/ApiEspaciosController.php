@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Espacios;
 
-class EspaciosController extends Controller
+class ApiEspaciosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class EspaciosController extends Controller
      */
     public function index()
     {
-        
-        return view('espacios', ['espacios'=>Espacios::all()]);
+        $espacios = Espacios::all();
+        return response()->json($espacios);
     }
 
 
@@ -44,15 +44,11 @@ class EspaciosController extends Controller
      * @param \App\Models\Reserva $reserva
      * @return \Illuminate\Http\Response
      */
-    public function show(Espacios $espacio)
+    public function show(Espacios $espacios)
     {
-        return view('show', ['espacio'=>$espacio]);
+        return response()->json($espacios);
     }
 
-    public function edit(Espacios $espacio)
-    {
-        return view('edit', ['espacio'=>$espacio]);
-    }
 
     /**
      * Update the specified resource in storage.
@@ -61,10 +57,22 @@ class EspaciosController extends Controller
      * @param \App\Models\Reserva $reserva
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Espacios $espacio)
+    public function update(Request $request, $id)
     {
-        $espacio->update($request->all());
-        return redirect('espacios');
+        if ($request->user()->tokenCan('create','read','update','delete')) {
+            $espacio = Espacios::find($id);
+            if ($espacio->available == 'true' || $reserva->available == 'false') {
+                $espacio->update($request->all());
+                $espacio->save();
+                return response()->json($espacio);
+            }
+            else {
+                return response()->json('No es pot actualitzar ja que el estat no pot ser aixi');
+            }
+        }
+        else {
+            return response()->json('El token no te permisos');
+        }
     }
 
 
@@ -76,7 +84,13 @@ class EspaciosController extends Controller
      */
     public function destroy(Espacios $espacio)
     {
-        $espacio->delete();
-        return redirect('espacios');
+        if ($espacio->available == 'true' || $espacio->available == 'false') {
+            $reserva->delete();
+            return response()->json('comanda eliminada correctament');
+        }
+        else {
+            return response()->json('No es pot eliminar la comanda per el seu estat');
+        }
     }
+
 }

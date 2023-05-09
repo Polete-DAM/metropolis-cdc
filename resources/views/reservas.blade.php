@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('header')
-<h2>Llistat Usuaris</h2>
+<h2>Listado Reservas</h2>
 @endsection
 
 @section('content')
@@ -33,7 +33,7 @@
             <a href="{{ url('reservas/' . $reserva->id . '/edit')}}" class="btn btn-warning">Edit</a>
         </td>
         <td>
-            <form action="{{ url('reservas/',$reserva->id)}}" method='POST'>
+            <form action="{{ url('reservas',$reserva->id)}}" method='POST'>
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger">Delete</button>

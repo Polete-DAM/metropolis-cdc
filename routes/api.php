@@ -2,6 +2,10 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ApiReservasController;
+use App\Models\Reservas;
+use App\Http\Controllers\ApiEspaciosController;
+use App\Models\Espacios;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/reservas', function (Request $request) {
     if ($request->user()->tokenCan('create','read','update','delete')) {
-        $ReservasController = new ReservasController();
+        $ReservasController = new ApiReservasController();
         return $ReservasController->index();
     }
     else {
@@ -28,10 +32,32 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/reservas', function (Requ
     }        
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/reservas/{email}', function (Request $request) {
+Route::middleware(['auth:sanctum', 'verified'])->get('/reservas/{reserva}', function ($id, Request $request) {
     if ($request->user()->tokenCan('create','read','update','delete')) {
-        $ReservasController = new ReservasController();
-        return $ReservasController->show($request);
+        $ReservasController = new ApiReservasController();
+        $reserva = App\Models\Reservas::find($id);
+        return $ReservasController->show($reserva);
+    }
+    else {
+        return response()->json('El token no te permisos');
+    }        
+});
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/espacios', function (Request $request) {
+    if ($request->user()->tokenCan('create','read','update','delete')) {
+        $EspaciosController = new ApiEspaciosController();
+        return $EspaciosController->index();
+    }
+    else {
+        return response()->json('El token no te permisos');
+    }        
+});
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/espacios/{espacio}', function ($id, Request $request) {
+    if ($request->user()->tokenCan('create','read','update','delete')) {
+        $EspaciosController = new ApiEspaciosController();
+        $espacio = App\Models\Espacios::find($id);
+        return $EspaciosController->show($espacio);
     }
     else {
         return response()->json('El token no te permisos');

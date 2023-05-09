@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ReservasController;
+use App\Http\Controllers\EspaciosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +29,34 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::get('reservas', [ReservasController::class,'index']);
+Route::get('reservas/{reserva}', [ReservasController::class,'show']);
+
+
+Route::middleware('auth')->group(function () {
+    Route::get('reservas/{reserva}/edit', [ReservasController::class,'edit']);
+    Route::put('reservas/{reserva}', [ReservasController::class,'update']);
+    Route::delete('reservas/{reserva}', [ReservasController::class,'destroy']);
+});
+
+Route::get('espacios', [EspaciosController::class,'index']);
+Route::get('espacios/{espacio}', [EspaciosController::class,'show']);
+
+
+Route::middleware('auth')->group(function () {
+    Route::get('espacios/{espacio}/edit', [EspaciosController::class,'edit']);
+    Route::put('espacios/{espacio}', [EspaciosController::class,'update']);
+    Route::delete('espacios/{espacio}', [EspaciosController::class,'destroy']);
+});
+
+
+/*Route::middleware(['auth:sanctum', 'verified'])->get('/reservas', function (Request $request) {
+    if ($request->user()->tokenCan('create','read','update','delete')) {
+        $ReservasController = new ReservasController();
+        return $ReservasController->index();
+    }
+    else {
+        return response()->json('El token no te permisos');
+    }        
+});*/
