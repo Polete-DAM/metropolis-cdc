@@ -10,9 +10,10 @@
     <thread class="thread-dark">
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Created</th>
+            <th scope="col">Cliente</th>
+            <th scope="col">Evento</th>
+            <th scope="col">Dia</th>
+            <th scope="col">Estado Reserva</th>
             <th scope="col" colspan=3></th>
         </tr>
     </thread>
@@ -21,9 +22,10 @@
     @foreach($reservas as $reserva)
     <tr>
         <th scope="row">{{ $reserva->id }}</th>
-        <td>{{ $reserva->name }}</td>
-        <td>{{ $reserva->email }}</td>
-        <td>{{ $reserva->created_at }}</td>
+        <td>{{ $reserva->client_id }}</td>
+        <td>{{ $reserva->event }}</td>
+        <td>{{ $reserva->day }}</td>
+        <td>{{ $reserva->estado }}</td>
         <td>
             <a href="{{ url('reservas/' . $reserva->id )}}" class="btn btn-primary">Show</a>
         </td>
