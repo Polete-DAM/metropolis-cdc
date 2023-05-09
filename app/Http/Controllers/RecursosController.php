@@ -13,8 +13,7 @@ class RecursosController extends Controller
      */
     public function index()
     {
-        $Comandes = Comanda::all();
-        return response()->json($Comandes);
+        
     }
 
 
@@ -26,14 +25,7 @@ class RecursosController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->user()->tokenCan('create','read')) {
-            $novacomanda = Comanda::create($request->all());
-            $novacomanda->save();
-            return response()->json($novacomanda);
-        }
-        else {
-            return response()->json('El token no te permisos');
-        }
+        
     }
 
 
@@ -43,9 +35,9 @@ class RecursosController extends Controller
      * @param \App\Models\Comanda $comanda
      * @return \Illuminate\Http\Response
      */
-    public function show(Comanda $comanda)
+    public function show(Client $client)
     {
-        return response()->json($comanda);
+        
     }
 
 
@@ -58,38 +50,19 @@ class RecursosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if ($request->user()->tokenCan('create','read','update','delete')) {
-            $comanda = Comanda::find($id);
-            if ($comanda->estat == 'Pendent' || $comanda->estat == 'Acceptada' || $comanda->estat == 'Cancelada' || $comanda->estat == 'Tancada') {
-                $comanda->update($request->all());
-                $comanda->save();
-                return response()->json($comanda);
-            }
-            else {
-                return response()->json('No es pot actualitzar ja que el estat no pot ser aixi');
-            }
-        }
-        else {
-            return response()->json('El token no te permisos');
-        }
+        
     }
 
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\Comanda $comanda
+     * @param \App\Models\Cliente $cliente
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comanda $comanda)
+    public function destroy(Request $request)
     {
-        if ($comanda->estat == 'Pendent' || $comanda->estat == 'Cancelada') {
-            $comanda->delete();
-            return response()->json('comanda eliminada correctament');
-        }
-        else {
-            return response()->json('No es pot eliminar la comanda per el seu estat');
-        }
+        
     }
 
 }
