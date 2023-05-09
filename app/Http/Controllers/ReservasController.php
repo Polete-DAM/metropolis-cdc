@@ -41,7 +41,7 @@ class ReservasController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\Comanda $comanda
+     * @param \App\Models\Reserva $reserva
      * @return \Illuminate\Http\Response
      */
     public function show(Reservas $reserva)
@@ -54,7 +54,7 @@ class ReservasController extends Controller
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Comanda $comanda
+     * @param \App\Models\Reserva $reserva
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
