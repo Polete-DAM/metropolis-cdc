@@ -27,14 +27,7 @@ class EspaciosController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->user()->tokenCan('create','read')) {
-            $nouespai = Espacios::create($request->all());
-            $nouespai->save();
-            return response()->json($nouespai);
-        }
-        else {
-            return response()->json('El token no te permisos');
-        }
+       
     }
 
 
@@ -46,19 +39,19 @@ class EspaciosController extends Controller
      */
     public function show(Espacios $espacio)
     {
-        return view('show', ['espacio'=>$espacio]);
+        return view('showespacio', ['espacio'=>$espacio]);
     }
 
     public function edit(Espacios $espacio)
     {
-        return view('edit', ['espacio'=>$espacio]);
+        return view('editespacio', ['espacio'=>$espacio]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Reserva $reserva
+     * @param \App\Models\Espacios $espacio
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Espacios $espacio)

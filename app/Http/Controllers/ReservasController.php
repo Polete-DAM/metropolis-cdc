@@ -27,14 +27,7 @@ class ReservasController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->user()->tokenCan('create','read')) {
-            $novareserva = Reservas::create($request->all());
-            $novareserva->save();
-            return response()->json($novareserva);
-        }
-        else {
-            return response()->json('El token no te permisos');
-        }
+       
     }
 
 
@@ -46,12 +39,12 @@ class ReservasController extends Controller
      */
     public function show(Reservas $reserva)
     {
-        return view('show', ['reserva'=>$reserva]);
+        return view('showreserva', ['reserva'=>$reserva]);
     }
 
     public function edit(Reservas $reserva)
     {
-        return view('edit', ['reserva'=>$reserva]);
+        return view('editreserva', ['reserva'=>$reserva]);
     }
 
     /**
