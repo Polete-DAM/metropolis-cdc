@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('espacios', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('nombre');
             $table->float('area');
-            $table->boolean('available');
-            $table->integer('capacity');
+            $table->integer('capacidad');
+            $table->string('disponibilidad');
+            $table->timestamps();
         });
     }
 

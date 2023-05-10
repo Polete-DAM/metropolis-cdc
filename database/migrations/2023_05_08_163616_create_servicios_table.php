@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('type');
             $table->boolean('available');
             $table->string('supplier');
+            $table->timestamps();
         });
     }
 

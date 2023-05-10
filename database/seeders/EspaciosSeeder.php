@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
+use App\Models\Espacios;
 
 class EspaciosSeeder extends Seeder
 {
@@ -12,6 +13,6 @@ class EspaciosSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Espacios::factory()->count(10)->create();
     }
 }

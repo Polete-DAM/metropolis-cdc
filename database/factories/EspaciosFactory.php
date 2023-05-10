@@ -17,7 +17,12 @@ class EspaciosFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            
+            'nombre' => $this->faker->word(),
+            'area' => $this->faker->numberBetween(15,200),
+            'capacidad' => $this->faker->randomNumber(),
+            'disponibilidad' => $this->faker->word(),
+
         ];
     }
 }

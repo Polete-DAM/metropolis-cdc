@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('quantity');
             $table->integer('service_id');
             $table->integer('mobiliary');
+            $table->timestamps();
         });
     }
 

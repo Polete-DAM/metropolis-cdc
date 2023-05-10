@@ -12,8 +12,8 @@
             <th scope="col">#</th>
             <th scope="col">Nombre</th>
             <th scope="col">Area</th>
-            <th scope="col">Disponibilidad</th>
             <th scope="col">Capacidad</th>
+            <th scope="col">Disponibilidad</th>
             <th scope="col" colspan=3></th>
         </tr>
     </thread>
@@ -22,10 +22,10 @@
     @foreach($espacios as $espacio)
     <tr>
         <th scope="row">{{ $espacio->id }}</th>
-        <td>{{ $espacio->name }}</td>
+        <td>{{ $espacio->nombre }}</td>
         <td>{{ $espacio->area }}</td>
-        <td>{{ $espacio->available }}</td>
-        <td>{{ $espacio->capacity }}</td>
+        <td>{{ $espacio->capacidad }}</td>
+        <td>{{ $espacio->disponibilidad }}</td>
         <td>
             <a href="{{ url('espacios/' . $espacio->id )}}" class="btn btn-primary">Show</a>
         </td>

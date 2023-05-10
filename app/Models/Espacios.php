@@ -10,10 +10,10 @@ class Espacios extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'nombre',
         'area',
-        'available',
-        'capacity',
+        'capacidad',
+        'disponibilidad',
     ];
 
     public function reservas(){

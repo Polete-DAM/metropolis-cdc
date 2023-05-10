@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('event');
             $table->datetime('day');
             $table->string('estado');
+            $table->timestamps();
         });
     }
 

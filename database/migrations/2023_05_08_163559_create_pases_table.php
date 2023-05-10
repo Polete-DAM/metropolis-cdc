@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('phone');
             $table->datetime('time_start');
             $table->datetime('time_end');
+            $table->timestamps();
         });
     }
 

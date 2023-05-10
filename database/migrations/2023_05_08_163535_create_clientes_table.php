@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('codi_postal');
             $table->integer('phone');
+            $table->timestamps();
         });
     }
 
