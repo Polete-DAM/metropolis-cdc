@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Models\Espacios;
+use App\Http\Resources\RecursoEspacios;
 
 class ApiEspaciosController extends Controller
 {
@@ -15,9 +17,8 @@ class ApiEspaciosController extends Controller
     public function index()
     {
         $espacios = Espacios::all();
-        return response()->json($espacios);
+        return RecursoEspacios::collection($espacios)->additional(['status' => 200]);
     }
-
 
     /**
      * Store a newly created resource in storage.
