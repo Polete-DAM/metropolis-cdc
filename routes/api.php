@@ -84,3 +84,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/cliente/espacios/{espacio
         return response()->json('El token no te permisos');
     }        
 });
+
+Route::apiResource('espacios',ApiEspaciosController::class);
