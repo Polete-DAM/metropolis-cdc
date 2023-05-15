@@ -43,7 +43,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/reservas/{reserva}', func
     }        
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/espacios', function (Request $request) {
+Route::middleware(['auth:sanctum', 'verified'])->get('/admin/espacios', function (Request $request) {
     if ($request->user()->tokenCan('create','read','update','delete')) {
         $EspaciosController = new ApiEspaciosController();
         return $EspaciosController->index();
@@ -53,8 +53,29 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/espacios', function (Requ
     }        
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/espacios/{espacio}', function ($id, Request $request) {
+Route::middleware(['auth:sanctum', 'verified'])->get('/cliente/espacios', function (Request $request) {
+    if ($request->user()->tokenCan('create','read')) {
+        $EspaciosController = new ApiEspaciosController();
+        return $EspaciosController->index();
+    }
+    else {
+        return response()->json('El token no te permisos');
+    }        
+});
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/admin/espacios/{espacio}', function ($id, Request $request) {
     if ($request->user()->tokenCan('create','read','update','delete')) {
+        $EspaciosController = new ApiEspaciosController();
+        $espacio = App\Models\Espacios::find($id);
+        return $EspaciosController->show($espacio);
+    }
+    else {
+        return response()->json('El token no te permisos');
+    }        
+});
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/cliente/espacios/{espacio}', function ($id, Request $request) {
+    if ($request->user()->tokenCan('create','read')) {
         $EspaciosController = new ApiEspaciosController();
         $espacio = App\Models\Espacios::find($id);
         return $EspaciosController->show($espacio);

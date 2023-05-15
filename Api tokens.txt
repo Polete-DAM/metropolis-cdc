@@ -1,3 +1,3 @@
-Admin token - ZyBNRI2lIZfKjweYhk9ji5H2DSFCuVOqWfoWwdo3
+Admin token - OGcVut72RPbNC4hWF3cIb6mF22F2T3PXcfBi48KE
 
-Client token - ScQDX7YtT1Cni5CVVKQK1ujiWlbMdB5TWVlukas2
+Client token - DYpJCg3REXKSDwKEzm3sb5maBFk2JeKnpgDsoqcz
