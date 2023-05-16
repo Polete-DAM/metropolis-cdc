@@ -17,7 +17,7 @@ class ApiEspaciosController extends Controller
     public function index()
     {
         $espacios = Espacios::all();
-        return response()->json($Clients);
+        return response()->json($espacios);
     }
 
     /**
