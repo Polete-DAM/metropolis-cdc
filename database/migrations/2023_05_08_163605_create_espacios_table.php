@@ -17,6 +17,7 @@ return new class extends Migration
             $table->float('area');
             $table->integer('capacidad');
             $table->string('disponibilidad');
+            $table->string('imagen_url');
             $table->timestamps();
         });
     }

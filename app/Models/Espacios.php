@@ -14,6 +14,7 @@ class Espacios extends Model
         'area',
         'capacidad',
         'disponibilidad',
+        'imagen_url',
     ];
 
     public function reservas(){
