@@ -86,3 +86,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/cliente/espacios/{espacio
 });
 
 Route::apiResource('espacios',ApiEspaciosController::class);
+
+Route::middleware(['auth:sanctum', 'verified'])->post('/reservas', [ApiReservasController::class, 'store']);
+Route::apiResource('reservas', ApiReservasController::class);

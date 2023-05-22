@@ -27,14 +27,24 @@ class ApiReservasController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->user()->tokenCan('create','read')) {
-            $novareserva = Reservas::create($request->all());
-            $novareserva->save();
-            return response()->json($novareserva);
-        }
-        else {
-            return response()->json('El token no te permisos');
-        }
+        $newReserva = Reservas::create([
+            'event' => $request->input('event'),
+            'email' => $request->input('email'),
+            'company_name' => $request->input('company_name'),
+            'space' => $request->input('space'),
+            'start_date' => $request->input('start_date'),
+            'end_date' => $request->input('end_date'),
+            'n_attendees' => $request->input('n_attendees'),
+            'n_bus_pass' => $request->input('n_bus_pass'),
+            'n_staff_pass' => $request->input('n_staff_pass'),
+            'n_parking_pass' => $request->input('n_parking_pass'),
+            'accepted' => $request->input('accepted'),
+        ]);
+
+        $reservaArray = $newReserva->toArray();
+
+        // Return the response as an array
+        return response(["Reserva creada exitosament"]);
     }
 
 
