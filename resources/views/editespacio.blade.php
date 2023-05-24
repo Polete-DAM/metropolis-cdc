@@ -6,7 +6,7 @@
 
 @section('content')
 <a href="{{url('espacios')}}" class="btn btn-link"><< Inicio</a>
-<form action='/espacios/{{$espacio->id}}' method='PUT'>
+<form action='/espacios/{{$espacio->id}}' method='POST'>
         @csrf
         @method('put')
 <div class="mb-3">
@@ -28,6 +28,10 @@
 <div class="mb-3">
     <label for="disponibilidad" class="form-label">Disponibilidad</label>
     <input type="text" class="form-control" id="disponibilidad" value="{{ $espacio->disponibilidad }}" name="disponibilidad">
+</div>
+<div class="mb-3">
+    <label for="imagenlink" class="form-label">URL Imagen</label>
+    <input type="text" class="form-control" id="imagenlinl" value="{{ $espacio->imagen_url }}" name="imagenlink">
 </div>
 
 <button type="submit" class="btn btn-primary">Submit</button>

@@ -17,6 +17,8 @@ class Espacios extends Model
         'imagen_url',
     ];
 
+    public $timestamps = false;
+
     public function reservas(){
 
         return $this->belongsToMany(Reservas::class);

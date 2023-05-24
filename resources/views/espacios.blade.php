@@ -9,11 +9,12 @@
 <table class="table">
     <thread class="thread-dark">
         <tr>
-            <th scope="col">#</th>
+            <th scope="col">Id</th>
             <th scope="col">Nombre</th>
             <th scope="col">Area</th>
             <th scope="col">Capacidad</th>
             <th scope="col">Disponibilidad</th>
+            <th scope="col">URL Imagen</th>
             <th scope="col" colspan=3></th>
         </tr>
     </thread>
@@ -26,6 +27,7 @@
         <td>{{ $espacio->area }}</td>
         <td>{{ $espacio->capacidad }}</td>
         <td>{{ $espacio->disponibilidad }}</td>
+        <td>{{ $espacio->imagen_url }}</td>
         <td>
             <a href="{{ url('espacios/' . $espacio->id )}}" class="btn btn-primary">Show</a>
         </td>
