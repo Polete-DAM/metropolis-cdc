@@ -5,7 +5,9 @@
 @endsection
 
 @section('content')
-<a href="{{url('reservas')}}" class="btn btn-link"><< Inicio</a>
+
+<a href="{{ url('reservas/') }}" class="btn btn-primary">Volver</a> 
+
 <form action='/reservas/{{$reserva->id}}' method='POST'>
         @csrf
         @method('put')
@@ -56,4 +58,16 @@
 
 </form>
 
+<form action='/reservas/{{$reserva->id}}' method='POST'>
+        @csrf
+        @method('put')
+        <input type="hidden" name="accepted" id="accepted" value="Aceptada">
+        <Button type="Submit" class="btn btn-success">Aceptar</Button>
+</form>
+<form action='/reservas/{{$reserva->id}}' method='POST'>
+        @csrf
+        @method('put')
+        <input type="hidden" name="accepted" id="accepted" value="Denegada">
+        <Button type="Submit" class="btn btn-danger">Denegar</Button> 
+</form>
 @endsection

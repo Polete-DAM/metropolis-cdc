@@ -44,7 +44,7 @@ class ReservasController extends Controller
 
     public function edit(Reservas $reserva)
     {
-        return view('editreserva', ['reserva'=>$reserva]);
+        return view('gestionreserva', ['reserva'=>$reserva]);
     }
 
     /**
@@ -59,7 +59,6 @@ class ReservasController extends Controller
         $reserva->update($request->all());
         return redirect('reservas');
     }
-
 
     /**
      * Remove the specified resource from storage.

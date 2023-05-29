@@ -20,7 +20,7 @@ return new class extends Migration
         $table->integer('n_bus_pass');
         $table->integer('n_staff_pass');
         $table->integer('n_parking_pass');
-        $table->boolean('accepted');
+        $table->string('accepted');
         $table->timestamps();});
     }
 

@@ -35,9 +35,9 @@ Route::get('reservas/{reserva}', [ReservasController::class,'show']);
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('reservas/{reserva}/edit', [ReservasController::class,'edit']);
+    Route::get('reservas/{reserva}/gestion', [ReservasController::class,'edit']);
     Route::put('reservas/{reserva}', [ReservasController::class,'update']);
-    Route::delete('reservas/{reserva}', [ReservasController::class,'destroy']);
+    /*Route::delete('reservas/{reserva}', [ReservasController::class,'destroy']);*/
 });
 
 Route::get('espacios', [EspaciosController::class,'index']);
