@@ -1,11 +1,15 @@
 @extends('layouts.master')
 
 @section('header')
+<br />
 <h2>Listado Reservas</h2>
 @endsection
 
 @section('content')
-
+<a href="{{url('espacios')}}" class="btn btn-link"><< Ir a Espacios -</a>
+<br />
+<a href="{{url('dashboard')}}" class="btn btn-link"><< Ir a tu Dashboard >></a>
+<br />
 <table class="table">
     <thread class="thread-dark">
         <tr>
