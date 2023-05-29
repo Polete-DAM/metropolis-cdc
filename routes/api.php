@@ -32,11 +32,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/reservas', function (Requ
     }        
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/reservas/{reserva}', function ($id, Request $request) {
-    if ($request->user()->tokenCan('create','read','update','delete')) {
+Route::middleware(['auth:sanctum', 'verified'])->get('/reservas/{email}', function ($email, Request $request) {
+    if ($request->user()->tokenCan('create','read')) {
         $ReservasController = new ApiReservasController();
-        $reserva = App\Models\Reservas::find($id);
-        return $ReservasController->show($reserva);
+        $reserva = App\Models\Reservas::where('email', $email)->get();
+        return response()->json($reserva);
     }
     else {
         return response()->json('El token no te permisos');

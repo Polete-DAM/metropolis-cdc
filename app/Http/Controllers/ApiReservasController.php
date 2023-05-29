@@ -56,7 +56,7 @@ class ApiReservasController extends Controller
      */
     public function show(Reservas $reserva)
     {
-        return response()->json($reserva);
+      
     }
 
 
