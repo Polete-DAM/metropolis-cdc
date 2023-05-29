@@ -10,7 +10,6 @@
 <br />
 <a href="{{url('dashboard')}}" class="btn btn-link"><< Ir a tu Dashboard >></a>
 <br />
-<br />
 <table class="table">
     <thread class="thread-dark">
         <tr>
