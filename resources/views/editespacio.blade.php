@@ -31,7 +31,7 @@
 </div>
 <div class="mb-3">
     <label for="imagenlink" class="form-label">URL Imagen</label>
-    <input type="text" class="form-control" id="imagenlinl" value="{{ $espacio->imagen_url }}" name="imagenlink">
+    <input type="text" class="form-control" id="imagenlink" value="{{ $espacio->imagen_url }}" name="imagenlink">
 </div>
 
 <button type="submit" class="btn btn-primary">Submit</button>
