@@ -32,7 +32,7 @@
 				<div class="col-md-15">
                 <br/>
         <h2>Gestión del espacio: {{ $espacio->nombre }}</h2>
-                <form action="url('espacios/{{$espacio->id}}')" method='POST'>
+                <form action='/espacios/{{$espacio->id}}' method='POST'>
                         @csrf
                         @method('put')
                     <div class="mb-3">
