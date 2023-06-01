@@ -14,11 +14,8 @@ class ReservasController extends Controller
      */
     public function index()
     {
-        
         return view('reservas', ['reservas'=>Reservas::all()]);
     }
-
-
     /**
      * Store a newly created resource in storage.
      *

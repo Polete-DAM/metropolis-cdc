@@ -19,6 +19,11 @@ class EspaciosController extends Controller
     }
 
 
+    public function create()
+    {
+        //return view('createespacios'); no funcionaba así que scrapped
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -27,7 +32,23 @@ class EspaciosController extends Controller
      */
     public function store(Request $request)
     {
-       
+       $request->validate([
+        'nombre' => 'required|unique:espacios',
+        'area' => 'required',
+        'capacidad' => 'required',
+        'disponibilidad' => 'required',
+        'imagen_url' => 'required'
+       ]);
+
+        $espacio = new Espacios();
+        $espacio->nombre = $request->input('nombre');
+        $espacio->area = $request->input('area');
+        $espacio->capacidad = $request->input('capacidad');
+        $espacio->disponibilidad = $request->input('disponibilidad');
+        $espacio->imagen_url = $request->input('imagen_url');
+        $espacio->save();
+
+        return view('espacios');
     }
 
 
