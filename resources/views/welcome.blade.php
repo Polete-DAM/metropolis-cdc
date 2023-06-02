@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html>
+<x-app-layout>
 <head>
 	<title>Metropolis</title>
 	<!-- Agrega los enlaces a los archivos de Bootstrap CSS -->
@@ -132,4 +131,4 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
-</html>
+</x-app-layout>

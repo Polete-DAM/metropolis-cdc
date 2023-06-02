@@ -28,9 +28,11 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    Route::get('espacios', [EspaciosController::class,'index'])->name('espacios');
+    Route::get('reservas', [ReservasController::class,'index'])->name('reservas');
 });
 
-Route::get('reservas', [ReservasController::class,'index']);
+
 Route::get('reservas/{reserva}', [ReservasController::class,'show']);
 
 
@@ -40,9 +42,8 @@ Route::middleware('auth')->group(function () {
     /*Route::delete('reservas/{reserva}', [ReservasController::class,'destroy']);*/
 });
 
-Route::get('espacios', [EspaciosController::class,'index']);
-Route::get('espacios/{espacio}', [EspaciosController::class,'show']);
 
+Route::get('espacios/{espacio}', [EspaciosController::class,'show']);
 
 Route::middleware('auth')->group(function () {
     Route::get('espacios/{espacio}/edit', [EspaciosController::class,'edit']);

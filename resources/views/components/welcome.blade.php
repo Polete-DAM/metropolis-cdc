@@ -10,18 +10,9 @@
 <body>
 	<!-- Agrega el encabezado del sitio web -->
 	<header>
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #e3f2fd;">
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav">					
-					<li class="nav-item">
-					<a class="nav-link" href="{{url('reservas')}}">Lista Reservas</a>
-					</li>
-					<li class="nav-item">
-					<a class="nav-link" href="{{url('espacios')}}">Lista Espacios</a>
-					</li>
 				</ul>
 			</div>
 		</nav>
@@ -29,13 +20,8 @@
 
 	<!-- Agrega el cuerpo del sitio web -->
 	<main>
-        <br/>
 		<div class="container">
 			<div class="container">
-				<div class="col-md-6">
-					
-				<p>Bienvenido a tu dashboard</p>
-				</div>
 				<div class="col-md-9">
 					<p>Calendario de Reservas</p>
 					<p> JUNIO 2023 </p>
