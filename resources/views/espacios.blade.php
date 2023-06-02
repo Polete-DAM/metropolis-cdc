@@ -17,6 +17,17 @@
 	<br/>
 		<div class="container">
 			<div class="container">
+				<form action="{{route('espacios')}}" method="GET">
+						<div class="form-row">
+							<div class="col-sm-4 my-1">
+								<input type="search" class="form-control" placeholder="Buscar espacio" name="buscador" value="{{$buscador}}">
+							</div>
+							<div class="col-auto my-1">
+								<input type="submit" class="btn btn-success" value="Buscar">
+							</div>
+						</div>
+					</form>
+					<br/>
 				<div>
 					<table class="table">
                             <thread class="thread-dark">
@@ -30,7 +41,13 @@
                                 </tr>
                             </thread>
                             <tbody>
-                            @foreach($espacios as $espacio)
+							@if(count($espacios)<=0)
+							<br/>
+							<tr>
+								<td colspan="8">No hay resultados</td> 
+							</tr>
+							@else
+							@foreach($espacios as $espacio)
                             <tr>
                                 <th scope="row">{{ $espacio->id }}</th>
                                 <td>{{ $espacio->nombre }}</td>
@@ -52,8 +69,10 @@
                                 </td>
                             </tr>
                             @endforeach
+							@endif
 						</tbody>
 					</table>
+					{{$espacios->links()}}
 				</div>
 			</div>
 		</div>

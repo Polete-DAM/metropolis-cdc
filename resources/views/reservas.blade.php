@@ -16,7 +16,16 @@
     </x-slot>
 	<br/>
 		<div class="container">
-			<div class="container">
+				<form action="{{route('reservas')}}" method="GET">
+					<div class="form-row">
+						<div class="col-sm-4 my-1">
+							<input type="search" class="form-control" placeholder="Buscar reserva" name="buscador" value="{{$buscador}}">
+						</div>
+						<div class="col-auto my-1">
+							<input type="submit" class="btn btn-success" value="Buscar">
+						</div>
+					</div>
+				</form>
 				<div>
 					<br/>
 					<table class="table">
@@ -32,7 +41,12 @@
 							</tr>
 						</thread>
 						<tbody>
-					
+						@if(count($reservas)<=0)
+						<br/>
+							<tr>
+								<td colspan="8">No hay resultados</td> 
+							</tr>
+							@else
 						@foreach($reservas as $reserva)
 						<tr>
 							<th scope="row">{{ $reserva->id }}</th>
@@ -42,22 +56,27 @@
 							<td>{{ $reserva->space }}</td>
 							<td>{{ $reserva->accepted }}</td>
 							<td>
-								<a class="btn btn-primary" href="{{ url('reservas/' . $reserva->id)}}">Expandir informacion</a> </td>
+								<a class="btn btn-primary" href="{{ url('reservas/' . $reserva->id)}}">Mostrar</a> </td>
 							</td>
 							<td>
 								<a href="{{ url('reservas/' . $reserva->id . '/gestion')}}" class="btn btn-warning">Gestionar</a>
 							</td>
+							<td>
+                                    <form action="{{ url('reservas',$reserva->id)}}" method='POST'>
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                    </form>
+                                </td>
 						</tr>
 						@endforeach
-					
+						@endif
 						</tbody>
 					</table>
+					{{$reservas->links()}}
 				</div>
 			</div>
 		</div>
-		
-		
-
 	</main>
 
 	<!-- Agrega el pie de página del sitio web -->
@@ -71,5 +90,6 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	
 </body>
 </x-app-layout>

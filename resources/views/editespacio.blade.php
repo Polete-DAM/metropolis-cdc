@@ -8,22 +8,11 @@
 	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-	<!-- Agrega el encabezado del sitio web -->
-	<header>
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<a class="navbar-brand" href="{{ url('dashboard') }}">Dashboard</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="navbar-nav">
-					<li class="nav-item">
-						<a class="nav-link" href="{{url('reservas')}}">Volver</a>
-					</li>
-				</ul>
-			</div>
-		</nav>
-	</header>
+<x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Registro de Espacios') }}
+        </h2>
+    </x-slot>
 
 	<main>
 	<div class="container">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Reservas;
+use Illuminate\Support\Facades\DB;
 
 class ReservasController extends Controller
 {
@@ -12,9 +13,18 @@ class ReservasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('reservas', ['reservas'=>Reservas::all()]);
+        $buscador=trim($request->get('buscador'));
+        $reservas=DB::table('reservas')
+                    ->select('id','event','email','company_name','space','accepted')
+                    ->where('event','LIKE','%'.$buscador.'%')
+                    ->orWhere('email','LIKE','%'.$buscador.'%')
+                    ->orWhere('company_name','LIKE','%'.$buscador.'%')
+                    ->orWhere('space','LIKE','%'.$buscador.'%')
+                    ->orWhere('accepted','LIKE','%'.$buscador.'%')
+                    ->paginate(10);
+        return view('reservas', compact('reservas','buscador'));
     }
     /**
      * Store a newly created resource in storage.

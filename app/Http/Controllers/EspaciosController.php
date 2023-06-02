@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Espacios;
 
 class EspaciosController extends Controller
@@ -12,10 +13,17 @@ class EspaciosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        
-        return view('espacios', ['espacios'=>Espacios::all()]);
+        $buscador=trim($request->get('buscador'));
+        $espacios=DB::table('espacios')
+                    ->select('id','nombre','area','capacidad','disponibilidad')
+                    ->where('nombre','LIKE','%'.$buscador.'%')
+                    ->orWhere('area','LIKE','%'.$buscador.'%')
+                    ->orWhere('capacidad','LIKE','%'.$buscador.'%')
+                    ->orWhere('disponibilidad','LIKE','%'.$buscador.'%')
+                    ->paginate(10);
+        return view('espacios', compact('espacios','buscador'));
     }
 
 
