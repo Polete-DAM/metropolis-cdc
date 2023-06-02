@@ -122,7 +122,6 @@
     <br />
     <br />
     <br />
-    <br />
     <footer>
         <div class="container">
             <p>Derechos reservados © 2023</p>
