@@ -30,6 +30,9 @@ Route::middleware([
     })->name('dashboard');
     Route::get('espacios', [EspaciosController::class,'index'])->name('espacios');
     Route::get('reservas', [ReservasController::class,'index'])->name('reservas');
+    Route::get('calendario', function () {
+        return view('calendario');
+    })->name('calendario');
 });
 
 
