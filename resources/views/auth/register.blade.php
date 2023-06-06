@@ -19,13 +19,6 @@
 				<li class="nav-item">
 					<a class="nav-link" href="{{url('login')}}">Iniciar Sesion</a>
 					</li>
-					<li class="nav-item">
-					<a class="nav-link" href="{{url('reservas')}}">Lista Reservas</a>
-					</li>
-					<li class="nav-item">
-					<a class="nav-link" href="{{url('espacios')}}">Lista Espacios</a>
-					</li>
-					</li>
 				</ul>
 			</div>
 		</nav>
@@ -33,6 +26,10 @@
 		<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-6">
+            <div style="text-align: center;">
+					<img width=300 src="{{asset('/images/Logo.jpg')}}" href="{{ route('dashboard') }}"/>
+				</div>
+				<br/>
 				<h2 class="text-center mb-4">Registro de usuario</h2>
 				<form method="POST" action="{{ route('register') }}">
             @csrf

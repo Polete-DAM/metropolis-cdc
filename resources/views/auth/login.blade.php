@@ -17,12 +17,6 @@
 				<li class="nav-item">
 					<a class="nav-link" href="{{url('register')}}">Registrarse</a>
 					</li>
-					<li class="nav-item">
-					<a class="nav-link" href="{{url('reservas')}}">Lista Reservas</a>
-					</li>
-					<li class="nav-item">
-					<a class="nav-link" href="{{url('espacios')}}">Lista Espacios</a>
-					</li>
 				</ul>
 			</div>
 		</nav>
@@ -36,6 +30,10 @@
 		<div class="container">
 		<div class="row justify-content-center mt-5">
 			<div class="col-md-6">
+				<div style="text-align: center;">
+					<img width=300 src="{{asset('/images/Logo.jpg')}}" href="{{ route('dashboard') }}"/>
+				</div>
+				<br/>
 			<h2 class="text-center mb-4">Iniciar sesión</h2>
         <form method="POST" action="{{ route('login') }}">
             @csrf
@@ -56,15 +54,15 @@
                     <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
                 </label>
             </div>
-
             <div class="flex items-center justify-end mt-4">
                 @if (Route::has('password.request'))
 				<a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
+                        {{ __('¿Olvidaste tu contraeña?') }}
                     </a>
+					<br/>
                 @endif
 
-                <x-button class="btn btn-primary btn-block">
+                <x-button style="bgcolor = red;" class="btn btn-block">
                     {{ __('Log in') }}
                 </x-button>
             </div>
