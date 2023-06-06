@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Metropolis</title>
+	<title>Panel de usuario</title>
 	<!-- Agrega los enlaces a los archivos de Bootstrap CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<!-- Agrega tus propios estilos CSS -->
