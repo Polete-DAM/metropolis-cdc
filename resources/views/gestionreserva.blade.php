@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html>
-
+<x-app-layout>
 <head>
     <title>Metropolis</title>
     <!-- Agrega los enlaces a los archivos de Bootstrap CSS -->
@@ -10,29 +8,14 @@
 </head>
 
 <body>
-    <!-- Agrega el encabezado del sitio web -->
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="{{ url('dashboard') }}">Dashboard</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('reservas') }}">Volver</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-
-    <main>
+<main>
+	<x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Gestor de reservas') }}
+        </h2>
+    </x-slot>
+	<br/>
         <div class="container">
-            <br />
-
-            <br />
             <div class="container">
                 <div class="col-md-15">
                     <h2> Gestión de la reserva {{ $reserva->id }} </h2>
@@ -134,4 +117,4 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 
-</html>
+</x-app-layout>
