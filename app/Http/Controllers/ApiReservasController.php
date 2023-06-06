@@ -94,13 +94,8 @@ class ApiReservasController extends Controller
      */
     public function destroy(Reservas $reserva)
     {
-        if ($reserva->estado == 'Pendent' || $reserva->estado == 'Cancelada') {
-            $reserva->delete();
-            return response()->json('comanda eliminada correctament');
-        }
-        else {
-            return response()->json('No es pot eliminar la comanda per el seu estat');
-        }
+        $reserva->delete();
+        return response()->json('reserva eliminada correctament'); 
     }
 
 }

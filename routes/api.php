@@ -88,4 +88,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/cliente/espacios/{espacio
 Route::apiResource('espacios',ApiEspaciosController::class);
 
 Route::middleware(['auth:sanctum', 'verified'])->post('/reservas', [ApiReservasController::class, 'store']);
+//Route::middleware(['auth:sanctum', 'verified'])->delete('/reservas/{reserva}', [ApiReservasController::class, 'destroy']);
 Route::apiResource('reservas', ApiReservasController::class);
