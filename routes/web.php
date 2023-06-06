@@ -17,7 +17,7 @@ use App\Http\Controllers\EspaciosController;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('welcome');
 });
 
 Route::middleware([
@@ -50,14 +50,3 @@ Route::middleware('auth')->group(function () {
     Route::put('espacios/{espacio}', [EspaciosController::class,'update']);
     Route::delete('espacios/{espacio}', [EspaciosController::class,'destroy']);
 });
-
-
-/*Route::middleware(['auth:sanctum', 'verified'])->get('/reservas', function (Request $request) {
-    if ($request->user()->tokenCan('create','read','update','delete')) {
-        $ReservasController = new ReservasController();
-        return $ReservasController->index();
-    }
-    else {
-        return response()->json('El token no te permisos');
-    }        
-});*/
