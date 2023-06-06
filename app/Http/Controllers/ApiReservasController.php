@@ -69,22 +69,26 @@ class ApiReservasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if ($request->user()->tokenCan('create','read','update','delete')) {
+        if ($request->user()->tokenCan('create','read','update','delete')) 
+        {
             $reserva = Reservas::find($id);
-            if ($reserva->estado == 'Pendent' || $reserva->estado == 'Acceptada' || $reserva->estado == 'Cancelada' || $reserva->estado == 'Tancada') {
-                $reserva->update($request->all());
-                $reserva->save();
-                return response()->json($reserva);
-            }
-            else {
-                return response()->json('No es pot actualitzar ja que el estat no pot ser aixi');
-            }
-        }
-        else {
+            $reserva->update($request->all());
+            return redirect('Actualizado correctamente');
+            } 
+        else
+        {
             return response()->json('El token no te permisos');
         }
     }
 
+    public function cancel(Request $request, $id)
+    {
+        $reserva = Reservas::find($id);
+        $estado = "Cancelada";
+        $reserva->accepted = $estado;
+        $reserva->save();
+        return response()->json($reserva);
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -95,7 +99,7 @@ class ApiReservasController extends Controller
     public function destroy(Reservas $reserva)
     {
         $reserva->delete();
-        return response()->json('reserva eliminada correctament'); 
+        return response()->json('Reserva eliminada correctament'); 
     }
 
 }
