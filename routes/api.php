@@ -87,7 +87,32 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/cliente/espacios/{espacio
 
 Route::apiResource('espacios',ApiEspaciosController::class);
 
-Route::middleware(['auth:sanctum', 'verified'])->post('/reservas', [ApiReservasController::class, 'store']);
-Route::middleware(['auth:sanctum', 'verified'])->delete('/reservas/{reserva}', [ApiReservasController::class, 'destroy']);
-Route::middleware(['auth:sanctum', 'verified'])->put('/reservas/{reserva}/cancel', [ApiReservasController::class, 'cancel']);
+Route::middleware(['auth:sanctum', 'verified'])->post('/reservas', function (Request $request) {
+    if ($request->user()->tokenCan('create','read')) {
+        $ReservasController = new ApiReservasController();
+        return $ReservasController->store();
+    }
+    else {
+        return response()->json('El token no tiene permisos');
+    }
+});
+Route::middleware(['auth:sanctum', 'verified'])->delete('/reservas/{reserva}', function (Request $request, $id) {
+    if ($request->user()->tokenCan('delete')) {
+        $ReservasController = new ApiReservasController();
+        $reserva = App\Models\Reservas::find($id);
+        return $ReservasController->delete();
+    }
+    else {
+        return response()->json('El token no tiene permisos');
+    }
+});
+Route::middleware(['auth:sanctum', 'verified'])->put('/reservas/{reserva}/cancel', function (Request $request, $id) {
+    if ($request->user()->tokenCan('update')) {
+        $ReservasController = new ApiReservasController();
+        return $ReservasController->cancel($request, $id);
+    }
+    else {
+        return response()->json('El token no tiene permisos');
+    }
+});
 Route::apiResource('reservas', ApiReservasController::class);

@@ -81,14 +81,17 @@ class ApiReservasController extends Controller
         }
     }
 
-    public function cancel(Request $request, $id)
-    {
-        $reserva = Reservas::find($id);
+    public function cancel(Request $request, $reservaId)
+{
+    $reserva = Reservas::find($reservaId);
+    if ($reserva) {
         $estado = "Cancelada";
         $reserva->accepted = $estado;
         $reserva->save();
         return response()->json($reserva);
     }
+    
+}
 
     /**
      * Remove the specified resource from storage.
