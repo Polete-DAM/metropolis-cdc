@@ -22,7 +22,7 @@
 		<div class="container">
 			<div class="container">
 				<div class="col-md-15" style="text-align: center;">
-					<p>Calendario de Reservas</p>
+					<p>Calendario de Eventos</p>
 					<p> JUNIO 2023 </p>
 				</div>
 				<div class="col-md-15">
@@ -75,11 +75,11 @@
       							<td>14</td>
       							<td>15</td>
       							<td>16</td>
-      							<td><a href="https://www.circuitcat.com/ca/esdeveniments/ccm-cmv-ca/">17</a></td>
+      							<td><a href="https://www.circuitcat.com/ca/esdeveniments/ccm-cmv-ca/" style="color:#EE2426; font-weight: bold;">17</a></td>
       					
     						</tr>
     						<tr>
-      							<td><a href="https://www.circuitcat.com/ca/esdeveniments/ccm-cmv-ca/">18</a></td>
+      							<td><a href="https://www.circuitcat.com/ca/esdeveniments/ccm-cmv-ca/" style="color:#EE2426; font-weight: bold;">18</a></td>
       							<td>19</td>
       							<td>20</td>
       							<td>21</td>
@@ -93,8 +93,8 @@
       							<td>27</td>
       							<td>28</td>
       							<td>29</td>
-      							<td><a href="https://www.circuitcat.com/ca/esdeveniments/24-horas-de-catalunya-de-motociclismo-ca/">30</a></td>
-      							<td><a href="https://www.circuitcat.com/ca/esdeveniments/24-horas-de-catalunya-de-motociclismo-ca/">1</a></td>
+      							<td><a href="https://www.circuitcat.com/ca/esdeveniments/24-horas-de-catalunya-de-motociclismo-ca/" style="color:#EE2426; font-weight: bold;">30</a></td>
+      							<td><a href="https://www.circuitcat.com/ca/esdeveniments/24-horas-de-catalunya-de-motociclismo-ca/" style="color:#EE2426; font-weight: bold;">1</a></td>
     						</tr>
     						
   						</tbody>
